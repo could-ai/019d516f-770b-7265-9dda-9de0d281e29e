@@ -47,7 +47,13 @@ class _PresentationScreenState extends State<PresentationScreen> {
   final List<SlideData> _slides = [
     SlideData(
       title: 'Perilaku Hidup Bersih dan Sehat (PHBS)\ndi Lingkungan Kampus',
-      points: ['Mewujudkan Kampus Sehat, Nyaman, dan Berprestasi'],
+      points: [
+        'Mewujudkan Kampus Sehat, Nyaman, dan Berprestasi',
+        '',
+        'Disusun Oleh:',
+        'Nama : THIARA',
+        'NIM : 241121067'
+      ],
       icon: Icons.health_and_safety,
     ),
     SlideData(
@@ -308,11 +314,19 @@ class SlideWidget extends StatelessWidget {
                   ),
                 )
               else
-                ...slide.points.map((point) => Text(
-                      point,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: bodyFontSize, fontStyle: FontStyle.italic, color: Colors.black54),
-                    )),
+                ...slide.points.map((point) => Padding(
+                  padding: const EdgeInsets.only(bottom: 4.0),
+                  child: Text(
+                        point,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: bodyFontSize, 
+                          fontStyle: point.contains('Nama') || point.contains('NIM') || point.contains('Disusun') ? FontStyle.normal : FontStyle.italic, 
+                          fontWeight: point.contains('Nama') || point.contains('NIM') ? FontWeight.bold : FontWeight.normal,
+                          color: Colors.black87
+                        ),
+                      ),
+                )),
             ],
           ),
         ),
